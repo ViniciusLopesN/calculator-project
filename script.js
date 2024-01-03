@@ -19,6 +19,7 @@ let secondNumber;
 let operand; // used inside functio, check later.
 
 function operate(operand, a, b) {
+  
   switch (operand) {
     case '+':
       return add(a, b);

@@ -1,7 +1,95 @@
-* {
+html,
+body {
+  justify-content: space-between;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   height: 100vh;
-  background: firebrick;
+  background-color: silver;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: white;
+}
+
+#calculator {
+  min-height: 600px;
+  min-width: 500px;
+  display: flex;
+  flex-direction: column;
+  background-color: darkgrey;
+  gap: 10px
+}
+
+#screen {
+  display: flex;
+  flex-basis: 125px;
+  background-color: purple;
+}
+
+#display {
+  margin-left: auto;
+  flex-grow: 1;
+  align-self: flex-end;
+  text-align: end;
+  color: lightgrey;
+  font-size: 30px;
+}
+
+.screen-buttons {
+  flex: 0 1 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+#delete,
+#clear {
+  font-size: 20px;
+  flex: 1 1 25px;
+  width: 50px;
+  border: none;
+  border-radius: 50%;
+  color: purple;
+}
+
+.buttons {
+  min-width: 400px;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.operand-button {
+  color: purple
+}
+
+ #equal {
+  color: lightgrey;
+  background-color: purple;
+ }
+
+ 
+.body-button {
+  border: none;
+  flex: 1 1 24%;
+  height: auto;
+  padding: 0px;
+  font-size: 40px;
+}
+
