@@ -1,6 +1,6 @@
 # Calculator
 
-This is a project proposed in the  [The Odin Project](https://theodinproject.com/) curriculum.
+This is a project proposed in [The Odin Project](https://theodinproject.com/) curriculum.
 The calculator operates as close to the calculator apps found on phones/computers as I could achieve.
 
 ## Features
