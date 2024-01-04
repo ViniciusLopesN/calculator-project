@@ -27,7 +27,7 @@ function operate(operand, a, b) { //Function to call operations
     case '-':
       return subtract(a, b);
 
-    case 'x':
+    case '×':
       return multiply(a, b);
 
     case '÷':
