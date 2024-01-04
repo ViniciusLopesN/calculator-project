@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 * {
@@ -28,8 +29,8 @@ button:active {
 
 
 #calculator {
-  min-height: 600px;
-  min-width: 500px;
+  min-height: 350px;
+  min-width: 200px;
   display: flex;
   flex-direction: column;
   background-color: #333741;
@@ -48,12 +49,12 @@ button:active {
 
 #screen {
   display: flex;
-  flex-basis: 125px;
+  flex-basis: 90px;
   background-color: #570180;
 }
 
 #upper-display {
-  font-size: 20px;
+  font-size: 15px;
   color: rgba(240, 255, 240, 0.815);
   align-self: flex-end;
 }
@@ -76,16 +77,19 @@ button:active {
 
 #delete,
 #clear {
-  font-size: 20px;
-  flex: 0 1 50px;
-  width: 50px;
+  font-size: 15px;
+  flex: 0 1 30px;
+  width: 30px;
   border: none;
   border-radius: 50%;
   color: #570180;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .buttons {
-  min-width: 400px;
+  /* min-width: 400px; */
   flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
@@ -109,7 +113,7 @@ button:active {
   flex: 1 1 24%;
   height: auto;
   padding: 0px;
-  font-size: 40px;
+  font-size: 25px;
 }
 
 #footer {
