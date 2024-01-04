@@ -2,21 +2,10 @@ let inputedFirstNumber;
 let inputedSecondNumber;
 let inputedOperand;
 
-function add(a, b) {  //Functions for Operations
-  return Number(a) + Number(b);
-}
-
-function subtract(a, b) {
-  return Number(a) - Number(b);
-}
-
-function multiply(a, b) {
-  return Number(a) * Number(b);
-}
-
-function divide(a, b) {
-  return Number(a)/Number(b);
-}
+const add = (a, b) => Number(a) + Number(b);
+const subtract = (a, b) => Number(a) - Number(b);
+const multiply = (a, b) => Number(a) * Number(b);
+const divide = (a, b) => Number(a) / Number(b);
 
 function operate(operand, a, b) { //Function to call operations
 
@@ -38,15 +27,14 @@ function operate(operand, a, b) { //Function to call operations
   }
 }
 
-
 const display = document.getElementById('display');
 const upperDisplay = document.getElementById('upper-display');
 
 
 
+const clearButton = document.getElementById('clear'); // Clear display
+clearButton.addEventListener('click', clearContent)
 
-
-const clearButton = document.getElementById('clear');
 function clearContent() {
   inputedFirstNumber = '';
   inputedOperand = '';
@@ -59,13 +47,15 @@ function clearContent() {
 
 
 
-const deleteButton = document.getElementById('delete');
-clearButton.addEventListener('click', clearContent)
 
+const deleteButton = document.getElementById('delete'); // Delete Character
 deleteButton.addEventListener('click', () => {
   display.textContent = display.textContent.slice(0,-1);
 })
 
+
+const dotButton = document.getElementById('dot');
+dotButton.addEventListener('click', () => dotButton.disabled = true);
 
 const getButtons = document.querySelectorAll('.digit-button');
 const numberButtons = Array.from(getButtons).sort((a,b) => a.textContent - b.textContent);
@@ -83,8 +73,6 @@ for (const button of numberButtons) { // Create button functionality for numbers
   });
 } 
 
-const dotButton = document.getElementById('dot');
-dotButton.addEventListener('click', () => dotButton.disabled = true)
 
 function populateDisplay(event) {
   if(!inputedFirstNumber && !inputedSecondNumber && inputedOperand) {
@@ -124,7 +112,7 @@ for (const button of operandButtons) {
       if(display.textContent) {
         inputedFirstNumber = display.textContent;
       }
-      
+
       display.textContent = '';
       upperDisplay.textContent = `${inputedFirstNumber} ${inputedOperand}`
       }
@@ -132,8 +120,16 @@ for (const button of operandButtons) {
 
   }
 
+
+const equalButton = document.getElementById('equal');
+equalButton.addEventListener('click', () => {
+  if (inputedFirstNumber && inputedOperand) {
+    evaluate();
+  }
+});
+
+
 function evaluate() {
-  
   let upperDisplaySplit = upperDisplay.textContent.split(' ');
   inputedFirstNumber = upperDisplaySplit[0];
   inputedOperand = upperDisplaySplit[1];
@@ -149,9 +145,3 @@ function evaluate() {
 }
 
 
-const equalButton = document.getElementById('equal');
-equalButton.addEventListener('click', () => {
-  if (inputedFirstNumber && inputedOperand) {
-    evaluate();
-  }
-});
