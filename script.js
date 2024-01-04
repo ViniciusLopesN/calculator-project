@@ -48,6 +48,17 @@ const deleteButton = document.getElementById('delete');
 const upperDisplay = document.getElementById('upper-display');
 const dotButton = document.getElementById('dot');
 
+
+function operandIsActive() {
+  let isActive = false;
+  operandButtons.forEach(button => {
+    if(button.classList.contains('active')) {
+      return isActive = true;
+    }
+  });
+  return isActive;
+}
+
 function clearContent() {
   inputedFirstNumber = '';
   inputedOperand = '';
@@ -61,6 +72,7 @@ function clearContent() {
 function operandToggle(event) {
   operandButtons.forEach(button => button.classList.remove('active'));
   event.currentTarget.classList.toggle('active');
+  inputedOperand = event.currentTarget.textContent;
 }
 
 
@@ -68,9 +80,6 @@ clearButton.addEventListener('click', clearContent)
 
 deleteButton.addEventListener('click', () => {
   display.textContent = display.textContent.slice(0,-1);
-  if (operandButtons.forEach(button => button.classList.contains('active'))) {
-  inputedFirstNumber = display.textContent;
-  }
 })
 
 
@@ -81,7 +90,7 @@ for (const button of numberButtons) { // Create button functionality for numbers
       if(button.classList.contains('active')) {
         display.textContent = '';
         dotButton.disabled = false;
-        button.classList.remove('active');
+        button.classList.remove('active')
       }
     });
     populateDisplay(event);
@@ -105,26 +114,33 @@ const operandButtons = Array.from(getOperandButtons)
 
 for (const button of operandButtons) {
   button.addEventListener('click', (event) => {
-    if(display.textContent) {
-      operandToggle(event);
-      if(inputedFirstNumber) {
-        operandToggle(event);
-        evaluate();
-        inputedFirstNumber = display.textContent;
-        inputedOperand = button.textContent;
-        return;
-      }
-
-      inputedOperand = button.textContent;
-      inputedFirstNumber = display.textContent;
+    if(inputedFirstNumber && display.textContent){
+      evaluate();
     }
-  });
-}
+    if(display.textContent || operandIsActive()) {
+      operandToggle(event);
+      
+      if(display.textContent) {
+        inputedFirstNumber = display.textContent;
+      }
+      display.textContent = '';
+      upperDisplay.textContent = `${inputedFirstNumber} ${inputedOperand}`
+      }
+    });
+
+  }
 
 function evaluate() {
+  
+  let upperDisplaySplit = upperDisplay.textContent.split(' ');
+  inputedFirstNumber = upperDisplaySplit[0];
+  inputedOperand = upperDisplaySplit[1];
   inputedSecondNumber = display.textContent;
+
   upperDisplay.textContent = `${inputedFirstNumber} ${inputedOperand} ${inputedSecondNumber} = `
+
   display.textContent = parseFloat(operate(inputedOperand, inputedFirstNumber, inputedSecondNumber).toFixed(2));
+
   inputedFirstNumber = '';
   inputedSecondNumber = '';
   dotButton.disabled = false;
