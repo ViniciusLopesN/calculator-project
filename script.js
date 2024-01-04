@@ -1,3 +1,7 @@
+let inputedFirstNumber;
+let inputedSecondNumber;
+let inputedOperand;
+
 function add(a, b) {  //Functions for Operations
   return Number(a) + Number(b);
 }
@@ -13,10 +17,6 @@ function multiply(a, b) {
 function divide(a, b) {
   return Number(a)/Number(b);
 }
-
-let inputedFirstNumber;
-let inputedSecondNumber;
-let inputedOperand;
 
 function operate(operand, a, b) { //Function to call operations
 
@@ -38,27 +38,15 @@ function operate(operand, a, b) { //Function to call operations
   }
 }
 
-//Variable Calls
+
 const display = document.getElementById('display');
-const getButtons = document.querySelectorAll('.digit-button');
-const numberButtons = Array.from(getButtons).sort((a,b) => a.textContent - b.textContent);
-const equalButton = document.getElementById('equal');
-const clearButton = document.getElementById('clear');
-const deleteButton = document.getElementById('delete');
 const upperDisplay = document.getElementById('upper-display');
-const dotButton = document.getElementById('dot');
 
 
-function operandIsActive() {
-  let isActive = false;
-  operandButtons.forEach(button => {
-    if(button.classList.contains('active')) {
-      return isActive = true;
-    }
-  });
-  return isActive;
-}
 
+
+
+const clearButton = document.getElementById('clear');
 function clearContent() {
   inputedFirstNumber = '';
   inputedOperand = '';
@@ -69,13 +57,9 @@ function clearContent() {
   dotButton.disabled = false;
 }
 
-function operandToggle(event) {
-  operandButtons.forEach(button => button.classList.remove('active'));
-  event.currentTarget.classList.toggle('active');
-  inputedOperand = event.currentTarget.textContent;
-}
 
 
+const deleteButton = document.getElementById('delete');
 clearButton.addEventListener('click', clearContent)
 
 deleteButton.addEventListener('click', () => {
@@ -83,6 +67,8 @@ deleteButton.addEventListener('click', () => {
 })
 
 
+const getButtons = document.querySelectorAll('.digit-button');
+const numberButtons = Array.from(getButtons).sort((a,b) => a.textContent - b.textContent);
 
 for (const button of numberButtons) { // Create button functionality for numbers and period (.)
   button.addEventListener('click', (event) => {
@@ -97,6 +83,7 @@ for (const button of numberButtons) { // Create button functionality for numbers
   });
 } 
 
+const dotButton = document.getElementById('dot');
 dotButton.addEventListener('click', () => dotButton.disabled = true)
 
 function populateDisplay(event) {
@@ -107,7 +94,21 @@ function populateDisplay(event) {
   display.textContent += event.currentTarget.textContent;
 }
 
+function operandIsActive() {
+  let isActive = false;
+  operandButtons.forEach(button => {
+    if(button.classList.contains('active')) {
+      return isActive = true;
+    }
+  });
+  return isActive;
+}
 
+function operandToggle(event) {
+  operandButtons.forEach(button => button.classList.remove('active'));
+  event.currentTarget.classList.toggle('active');
+  inputedOperand = event.currentTarget.textContent;
+}
 
 const getOperandButtons = document.querySelectorAll('.operand-button')
 const operandButtons = Array.from(getOperandButtons)
@@ -123,6 +124,7 @@ for (const button of operandButtons) {
       if(display.textContent) {
         inputedFirstNumber = display.textContent;
       }
+      
       display.textContent = '';
       upperDisplay.textContent = `${inputedFirstNumber} ${inputedOperand}`
       }
@@ -146,6 +148,8 @@ function evaluate() {
   dotButton.disabled = false;
 }
 
+
+const equalButton = document.getElementById('equal');
 equalButton.addEventListener('click', () => {
   if (inputedFirstNumber && inputedOperand) {
     evaluate();
