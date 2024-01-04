@@ -90,7 +90,6 @@ for (const button of numberButtons) { // Create button functionality for numbers
 
 dotButton.addEventListener('click', () => dotButton.disabled = true)
 
-
 function populateDisplay(event) {
   if(!inputedFirstNumber && !inputedSecondNumber && inputedOperand) {
     display.textContent = '';

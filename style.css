@@ -4,11 +4,11 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-color: #8a8989;
+  background-color: #333741;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 * {
@@ -17,23 +17,29 @@ body {
 
 button {
   cursor: pointer;
+  font-weight: bold;
 }
 
 
 button:active {
-  filter: brightness(1.25);
+  filter: brightness(1.35);
 }
+
+
 
 #calculator {
   min-height: 600px;
   min-width: 500px;
   display: flex;
   flex-direction: column;
-  background-color: darkgrey;
-  gap: 10px
+  background-color: #333741;
+  gap: 10px;
+  align-self: center;
+  margin-top: 12vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#upper-section {
+#left-section {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
@@ -43,22 +49,22 @@ button:active {
 #screen {
   display: flex;
   flex-basis: 125px;
-  background-color: purple;
+  background-color: #570180;
 }
 
 #upper-display {
   font-size: 20px;
-  color: lightgoldenrodyellow;
+  color: rgba(240, 255, 240, 0.815);
   align-self: flex-end;
 }
 
 #display {
   align-self: flex-end;
-  color: lightgrey;
+  color: honeydew;
   font-size: 30px;
 }
 
-.screen-buttons {
+#right-section {
   flex: 0 1 25%;
   display: flex;
   flex-direction: column;
@@ -75,7 +81,7 @@ button:active {
   width: 50px;
   border: none;
   border-radius: 50%;
-  color: purple;
+  color: #570180;
 }
 
 .buttons {
@@ -88,13 +94,13 @@ button:active {
 }
 
 .operand-button {
-  color: purple
+  color: #570180
 }
 
  #equal,
  .active {
-  color: #a09e9e;
-  background-color: purple;
+  color: honeydew;
+  background-color: #570180;
  }
 
  
@@ -106,3 +112,21 @@ button:active {
   font-size: 40px;
 }
 
+#footer {
+  display: flex;
+  min-height: 50px;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  background-color: #570180;
+  }
+
+  #githubLogo{
+    transition: all .2s ease-in-out; 
+  }
+  
+  #githubLogo:hover {
+    transform: scale(1.3);
+  }
