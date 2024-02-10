@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  background-color: #333741;
+  background-color: #1a102c;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@ button:active {
   min-width: 200px;
   display: flex;
   flex-direction: column;
-  background-color: #333741;
+  background-color: transparent;
   gap: 10px;
   align-self: center;
   margin-top: 12vh;
